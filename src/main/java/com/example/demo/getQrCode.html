@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+    <!--<script src="http://localhost:8080/home/test?callback=showData"></script>-->
+
+    <script>
+        function showData(data) {
+            alert("callback"+data);
+        }
+
+        function getImg(){
+            // $.ajax({
+            //     url: "http://localhost:8080/home/test",
+            //     type:'Get',
+            //     datetype:"jsonp",
+            //     jsonpCallback: "showData",
+            //     success : function(data) {
+            //         debugger
+            //         // $('#qrcode').attr('src', 'data:image/jpg;base64,' + data);
+            //         alert("调用成功");
+            //     }
+            // });
+
+            $("head").append("<script src='http://localhost:8080/home/test?callback=showData'><\/script>");
+        }
+    </script>
+</head>
+<body>
+<h3>获取二维码</h3>
+<img id="qrcode" src="" alt="二维码" title="二维码">
+<input type="button" value="点点" onclick="getImg()" />
+</body>
+</html>
