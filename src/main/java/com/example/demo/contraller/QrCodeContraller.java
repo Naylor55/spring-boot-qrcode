@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.contraller;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -19,12 +19,14 @@ import java.io.File;
 import java.nio.file.Paths;
 import java.util.Hashtable;
 import java.util.Random;
-// import com.alibaba.druid.util.Base64;
 
 
 
 
-@RequestMapping("/home")
+/**
+ * 生成二维码
+ */
+@RequestMapping("/twoline")
 @RestController
 public class QrCodeContraller {
     private static final String CHARSET = "utf-8";
@@ -154,13 +156,5 @@ public class QrCodeContraller {
          return  encoder.encode(bytes);
 
         // return base64Str;
-    }
-
-
-    @GetMapping(value = "/test")
-    @ResponseBody
-    public ResponseEntity<?> test(HttpServletRequest request){
-//        return ResponseEntity.ok(resourceLoader.getResource("file:" + Paths.get(ROOT, filename).toString()));
-        return null;
     }
 }
