@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
     <!--<script src="http://localhost:8080/home/test?callback=showData"></script>-->
 
@@ -12,19 +13,19 @@
         }
 
         function getImg(){
-            // $.ajax({
-            //     url: "http://localhost:8080/home/test",
-            //     type:'Get',
-            //     datetype:"jsonp",
-            //     jsonpCallback: "showData",
-            //     success : function(data) {
-            //         debugger
-            //         // $('#qrcode').attr('src', 'data:image/jpg;base64,' + data);
-            //         alert("调用成功");
-            //     }
-            // });
+            $.ajax({
+                url: "http://localhost:8080/home/streambase64",
+                type:'Get',
+                datetype:"jsonp",
+                jsonpCallback: "showData",
+                success : function(data) {
+                    debugger
+                    // $('#qrcode').attr('src', 'data:image/jpg;base64,' + data);
+                    alert("调用成功");
+                }
+            });
 
-            $("head").append("<script src='http://localhost:8080/home/test?callback=showData'><\/script>");
+            // $("head").append("<script src='http://localhost:8080/home/test?callback=showData'><\/script>");
         }
     </script>
 </head>

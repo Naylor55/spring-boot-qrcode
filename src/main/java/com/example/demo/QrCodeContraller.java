@@ -19,6 +19,8 @@ import java.io.File;
 import java.nio.file.Paths;
 import java.util.Hashtable;
 import java.util.Random;
+// import com.alibaba.druid.util.Base64;
+
 
 
 
@@ -27,7 +29,7 @@ import java.util.Random;
 public class QrCodeContraller {
     private static final String CHARSET = "utf-8";
     private static final int QRCODE_SIZE = 300;
-    private static final String FORMAT = "JPG";
+    private static final String FORMAT = "png";
 
     /**
      * 创建一个二维码，保存为图片
@@ -71,7 +73,7 @@ public class QrCodeContraller {
      * 创建一个二维码，输出图片流
      * @return
      */
-    @GetMapping(value = "/stream")
+    @GetMapping(value = "/streambyte")
     @ResponseBody
     public  byte[] createQRCodeOutpuStream(){
         System.out.println("自定义输出=============");
@@ -112,7 +114,7 @@ public class QrCodeContraller {
      * 创建一个二维码，输出图片base64的字符串
      * @return
      */
-    @GetMapping(value = "/stream")
+    @GetMapping(value = "/streambase64")
     @ResponseBody
     public  String createQRCodeOutpuBase64(){
         System.out.println("自定义输出=============");
@@ -146,7 +148,12 @@ public class QrCodeContraller {
         System.out.println("结束");
         byte[] bytes = outStream.toByteArray();
         BASE64Encoder encoder=new BASE64Encoder();
-        return  encoder.encode(bytes);
+
+        //  String base64Str= Base64.byteArrayToBase64(bytes);
+
+         return  encoder.encode(bytes);
+
+        // return base64Str;
     }
 
 
@@ -154,5 +161,6 @@ public class QrCodeContraller {
     @ResponseBody
     public ResponseEntity<?> test(HttpServletRequest request){
 //        return ResponseEntity.ok(resourceLoader.getResource("file:" + Paths.get(ROOT, filename).toString()));
+        return null;
     }
 }
